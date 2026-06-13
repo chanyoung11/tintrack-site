@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tintrack 초대</title>
+<meta name="theme-color" content="#17151f">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .center { text-align: center; padding: 48px 0; }
+  .logo { width: 72px; height: 72px; border-radius: 19px; margin: 0 auto 24px;
+    background: linear-gradient(150deg,#a855f7,#7c3aed);
+    box-shadow: 0 12px 40px rgba(168,85,247,.35);
+    display:flex; align-items:center; justify-content:center; font-size:36px; }
+  .center h1 { font-size: 24px; margin: 0 0 10px; }
+  .center p { color: var(--muted); margin: 0 auto 28px; max-width: 360px; }
+  .btn { display:inline-block; background: var(--accent); color:#fff; font-weight:700;
+    text-decoration:none; padding: 14px 30px; border-radius: 13px; font-size: 16px; }
+  .sub { display:block; margin-top: 16px; color: var(--muted); font-size: 13px; }
+  .sub a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site"><span class="dot"></span><a href="/">Tintrack</a></header>
+  <section class="center">
+    <div class="logo">📍</div>
+    <h1 id="title">친구가 Tintrack에 초대했어요</h1>
+    <p id="desc">앱을 열어 친구를 추가하고, 지도 위에서 서로의 순간을 확인하세요.</p>
+    <a class="btn" id="open" href="#">앱에서 열기</a>
+    <span class="sub">앱이 없으신가요? <a href="/">설치 안내 보기</a></span>
+  </section>
+</div>
+<script>
+  (function () {
+    // 경로 /i/{username} 에서 username 추출
+    var parts = location.pathname.split("/").filter(Boolean);
+    var idx = parts.indexOf("i");
+    var username = idx >= 0 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+
+    var deepLink = username ? "tintrack://i/" + encodeURIComponent(username) : "tintrack://";
+    var openBtn = document.getElementById("open");
+    openBtn.setAttribute("href", deepLink);
+
+    if (username) {
+      document.getElementById("title").textContent = "@" + username + " 님이 초대했어요";
+    }
+
+    // 자동으로 앱 열기 시도 (사용자 제스처 없이도 커스텀 스킴 시도)
+    function tryOpen() { window.location.href = deepLink; }
+    // 살짝 지연 후 시도 — iOS/Android 모두 설치돼 있으면 앱으로 전환
+    setTimeout(tryOpen, 350);
+
+    openBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      tryOpen();
+    });
+  })();
+</script>
+</body>
+</html>
