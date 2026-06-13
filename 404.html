@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tintrack</title>
+<meta name="theme-color" content="#17151f">
+<style>
+  :root{--bg:#17151f;--text:#ece9f5;--muted:#a39fb3;--accent:#a855f7;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);min-height:100vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;padding:24px}
+  .logo{width:72px;height:72px;border-radius:19px;margin:0 auto 24px;
+    background:linear-gradient(150deg,#a855f7,#7c3aed);
+    box-shadow:0 12px 40px rgba(168,85,247,.35);
+    display:flex;align-items:center;justify-content:center;font-size:36px}
+  h1{font-size:23px;margin:0 0 10px;letter-spacing:-.02em}
+  p{color:var(--muted);margin:0 auto 26px;max-width:340px;line-height:1.6}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;
+    text-decoration:none;padding:14px 30px;border-radius:13px;font-size:16px}
+  .sub{display:block;margin-top:16px;color:var(--muted);font-size:13px}
+  .sub a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div>
+  <div class="logo">📍</div>
+  <h1 id="title">친구가 Tintrack에 초대했어요</h1>
+  <p id="desc">앱을 열어 친구를 추가하고, 지도 위에서 서로의 순간을 확인하세요.</p>
+  <a class="btn" id="open" href="#">앱에서 열기</a>
+  <span class="sub" id="installNote">앱이 없으신가요? <a href="/tintrack-site/">설치 안내 보기</a></span>
+</div>
+<script>
+  (function () {
+    var parts = location.pathname.split("/").filter(Boolean);
+    var idx = parts.indexOf("i");
+    var username = idx >= 0 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+
+    var openBtn = document.getElementById("open");
+
+    if (username) {
+      // 초대 링크 — 앱으로 튕기기
+      var deepLink = "tintrack://i/" + encodeURIComponent(username);
+      document.getElementById("title").textContent = "@" + username + " 님이 초대했어요";
+      openBtn.setAttribute("href", deepLink);
+      openBtn.addEventListener("click", function (e) { e.preventDefault(); window.location.href = deepLink; });
+      setTimeout(function () { window.location.href = deepLink; }, 350);
+    } else {
+      // 일반 404 — 초대가 아님
+      document.getElementById("title").textContent = "페이지를 찾을 수 없어요";
+      document.getElementById("desc").textContent = "주소를 다시 확인해 주세요.";
+      openBtn.setAttribute("href", "/tintrack-site/");
+      openBtn.textContent = "홈으로";
+      document.getElementById("installNote").style.display = "none";
+    }
+  })();
+</script>
+</body>
+</html>
