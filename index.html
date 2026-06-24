@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
 <title>Tintrack — 지도 위에 남기는 우리의 순간</title>
+<meta name="description" content="Tintrack은 가본 곳에 사진·영상 핀을 남기고 친구와만 조용히 공유하는 지도 기반 소셜 앱입니다. 운영: 바디페인팅(사업자등록번호 469-06-03606).">
 <meta property="og:title" content="Tintrack">
-<meta property="og:description" content="지도 위에 사진·영상 핀을 남기고 친구와 공유하세요.">
+<meta property="og:description" content="지도 위에 사진·영상 핀을 남기고 친구와 공유하는 지도 기반 소셜 앱.">
 <meta name="theme-color" content="#17151f">
 <link rel="stylesheet" href="style.css">
 <style>
-  .hero { text-align: center; padding: 40px 0 8px; }
+  .hero { text-align: center; padding: 24px 0 8px; }
   .logo {
     width: 76px; height: 76px; border-radius: 20px; margin: 0 auto 22px;
     background: linear-gradient(150deg, #a855f7, #7c3aed);
@@ -18,16 +20,50 @@
     font-size: 38px;
   }
   .hero h1 { font-size: 34px; margin: 0 0 12px; }
-  .hero p { color: var(--muted); font-size: 17px; margin: 0 auto; max-width: 460px; }
-  .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 34px 0 8px; }
-  .store-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px;
-    padding: 13px 22px; border-radius: 13px;
+  .hero .lead { color: var(--muted); font-size: 17px; margin: 0 auto; max-width: 460px; }
+  .cta {
+    display: inline-block; margin: 28px 0 6px; padding: 14px 28px; border-radius: 13px;
+    background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 15.5px;
   }
-  .store-btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
-  .note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 14px; }
+  .status {
+    display: block; margin-top: 16px;
+    color: var(--muted); font-size: 13.5px;
+  }
+  .status b { color: var(--text); font-weight: 600; }
+
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 8px; }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
+  .feature {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 18px;
+  }
+  .feature .ic { font-size: 22px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 15.5px; }
+  .feature p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  ol.steps { counter-reset: s; list-style: none; padding-left: 0; margin: 12px 0; }
+  ol.steps > li { position: relative; padding: 4px 0 14px 44px; margin: 0; }
+  ol.steps > li::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 0; top: 2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps > li b { color: var(--text); }
+  ol.steps > li span { color: var(--muted); font-size: 14.5px; }
+
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0 8px; }
+  @media (max-width: 560px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+  .shot { text-align: center; }
+  .shot img {
+    width: 100%; height: auto; border-radius: 18px;
+    border: 1px solid var(--border); background: var(--surface);
+    display: block;
+  }
+  .shot figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
+  .biz td:first-child { color: var(--muted); white-space: nowrap; width: 132px; }
 </style>
 </head>
 <body>
@@ -40,19 +76,100 @@
   <section class="hero">
     <div class="logo">📍</div>
     <h1>지도 위에 남기는<br>우리의 순간</h1>
-    <p>가본 곳에 사진·영상 핀을 남기고, 친구와만 조용히 공유하는 지도.</p>
+    <p class="lead">가본 곳에 사진·영상 핀을 남기고, 친구와만 조용히 공유하는 지도.</p>
 
-    <div class="stores">
-      <a class="store-btn" id="ios" href="#" aria-disabled="true"> App Store</a>
-      <a class="store-btn" id="android" href="#" aria-disabled="true">▶ Google Play</a>
-    </div>
-    <p class="note">곧 출시됩니다.</p>
+    <a class="cta" href="mailto:chanyoung07119@gmail.com?subject=Tintrack%20%EB%B2%A0%ED%83%80%20%EC%B0%B8%EC%97%AC%20%EB%AC%B8%EC%9D%98">베타 참여 문의</a>
+    <span class="status">현재 iOS <b>비공개 베타</b>로 운영 중인 서비스입니다.</span>
   </section>
 
-  <footer style="justify-content:center">
+  <h2>Tintrack이란?</h2>
+  <p>Tintrack은 내가 다녀온 장소에 사진·동영상으로 “핀”을 남기고, 서로 친구인 사람들과만
+  조용히 공유하는 <b>지도 기반 소셜 기록 앱</b>입니다. 불특정 다수에게 노출되는 공개
+  피드가 아니라, 친구·그룹 단위의 비공개 공유에 초점을 둔 점이 특징입니다. 가본 곳이
+  지도 위에 발자취처럼 쌓이고, 시간순으로 우리의 동선을 다시 볼 수 있습니다.</p>
+
+  <h2>주요 기능</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="ic">📍</div>
+      <h3>지도 핀 남기기</h3>
+      <p>현재 위치에 사진·영상을 찍어 핀으로 남깁니다. 좌표는 행정구역명으로 변환되어 표시됩니다.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">👥</div>
+      <h3>친구·그룹 공유</h3>
+      <p>서로 친구인 사람에게만 보이는 친구 공개, 또는 직접 만든 그룹에게만 보이는 그룹 공개를 선택합니다.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">🔒</div>
+      <h3>나만 보기</h3>
+      <p>각 핀을 비공개로 둘 수 있어, 나만 보는 개인 기록으로도 사용할 수 있습니다.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">🗂️</div>
+      <h3>보드</h3>
+      <p>핀을 주제별로 모아 보드로 엮고, 지도·시간순 트랙으로 우리의 여정을 다시 봅니다.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">🐾</div>
+      <h3>발자취</h3>
+      <p>친구들이 다녀간 곳이 지도 위에 쌓여, 우리가 함께 가본 동네를 한눈에 봅니다.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">⛅</div>
+      <h3>그날의 날씨</h3>
+      <p>핀을 남긴 곳의 날씨 정보가 함께 기록되어 그날의 분위기를 더합니다.</p>
+    </div>
+  </div>
+
+  <h2>이용 방법</h2>
+  <ol class="steps">
+    <li><b>가입하기</b> — <span>Google 또는 Apple 계정으로 간편하게 시작합니다.</span></li>
+    <li><b>친구 연결</b> — <span>초대 링크나 사용자명으로 친구를 맺습니다. 서로 수락해야 연결됩니다.</span></li>
+    <li><b>핀 남기기</b> — <span>가운데 카메라 버튼으로 지금 있는 곳의 사진·영상을 찍어 핀으로 남깁니다.</span></li>
+    <li><b>공개 범위 선택</b> — <span>친구 공개 · 그룹 공개 · 나만 보기 중에서 고릅니다.</span></li>
+    <li><b>지도에서 다시 보기</b> — <span>쌓인 핀과 친구들의 발자취를 지도·보드·시간순으로 둘러봅니다.</span></li>
+  </ol>
+
+  <!-- 앱 화면 — TestFlight build 12 실기기 스크린샷(img/shot-1~3.png) 추가 후 주석 해제.
+       이미지 없을 때 깨진 미리보기가 뜨지 않도록 잠시 비활성.
+  <h2>앱 화면</h2>
+  <div class="shots">
+    <figure class="shot">
+      <img src="img/shot-1.png" alt="Tintrack 지도 화면 — 친구들의 핀이 표시된 지도">
+      <figcaption>① 지도에 쌓인 핀</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="img/shot-2.png" alt="Tintrack 핀 남기기 — 카메라로 사진·영상 촬영">
+      <figcaption>② 사진·영상으로 핀 남기기</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="img/shot-3.png" alt="Tintrack 공개 범위 선택 — 친구·그룹·나만 보기">
+      <figcaption>③ 공개 범위 선택</figcaption>
+    </figure>
+  </div>
+  -->
+
+  <h2>운영 정보</h2>
+  <div class="box">
+    <table class="biz">
+      <tbody>
+        <tr><td>상호</td><td>바디페인팅</td></tr>
+        <tr><td>대표자</td><td>박찬영 외 1명 (공동사업자 김하은)</td></tr>
+        <tr><td>사업자등록번호</td><td>469-06-03606</td></tr>
+        <tr><td>업태 / 종목</td><td>정보통신업 / 응용 소프트웨어 개발 및 공급업</td></tr>
+        <tr><td>사업장 소재지</td><td>충청남도 천안시 동남구 문암로 114(안서동, 학구당원룸)</td></tr>
+        <tr><td>개업일</td><td>2026년 3월 18일</td></tr>
+        <tr><td>이메일</td><td><a href="mailto:chanyoung07119@gmail.com">chanyoung07119@gmail.com</a></td></tr>
+        <tr><td>고객문의</td><td><a href="tel:+821024450711">010-2445-0711</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
     <a href="privacy.html">개인정보처리방침</a>
     <a href="terms.html">이용약관</a>
-    <span>© 2026 바디페인팅</span>
+    <span>© 2026 바디페인팅 · Tintrack</span>
   </footer>
 </div>
 </body>
